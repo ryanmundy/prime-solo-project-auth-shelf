@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -11,13 +10,12 @@ import Paper from '@material-ui/core/Paper';
 
 const styles = theme => ({
   root: {
-    width: '30%',
+    width: '100%',
     marginTop: theme.spacing.unit * 3,
     overflowX: 'auto',
   },
   table: {
-    minWidth: 200,
-    // maxWidth:
+    minWidth: 700,
   },
 });
 
@@ -30,29 +28,27 @@ class UserList extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div>
-        <h1>User List</h1>
-        <Paper className={classes.root}>
-          <Table className={classes.table}>
-            <TableHead>
-              <TableRow>
-                <TableCell>Username</TableCell>
-                <TableCell>Items Added</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {this.props.users.map((user, i) => {
-                return (
-                  <TableRow key={i}>
-                    <TableCell >{user.username}</TableCell>
-                    <TableCell>{user.count}</TableCell>
-                  </TableRow>
-                );
-              })}
-            </TableBody>
-          </Table>
-        </Paper>
-      </div>
+      <Paper className={classes.root}>
+        <Table className={classes.table}>
+          <TableHead>
+            <TableRow>
+              <TableCell align="right">Username</TableCell>
+              <TableCell align="right">Items Added</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {this.props.users.map( (user, i) => {
+              return (
+                <TableRow key={i}>
+                  <TableCell align="right">{user.username}</TableCell>
+                  <TableCell align="right">{user.count}</TableCell>
+                </TableRow>
+              );
+            })}
+          </TableBody>
+        </Table>
+      </Paper>
+
     );
   }
 }
@@ -67,4 +63,3 @@ const mapStateToProps = reduxStore => ({
 });
 
 export default connect(mapStateToProps)(withStyles(styles)(UserList));
-
