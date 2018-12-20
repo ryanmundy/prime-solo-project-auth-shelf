@@ -28,8 +28,16 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 /**
  * Add an item for the logged in user to the shelf
  */
-router.post('/', (req, res) => {
-
+router.post('/', rejectUnauthenticated, (req, res) => {
+    const sqlText = `INSERT INTO "item"("description", "image_url", "person_id")
+    VALUES($1, $2, $3);`
+    pool.query(sqlText, [req.body.description, req.body.url, req.user.id])
+    .then( result => {
+        res.sendStatus(201);
+    }).catch( err => {
+        console.log('error in shelf POST:', err);
+        res.sendStatus(500);
+    })
 });
 
 
@@ -54,7 +62,16 @@ router.put('/:id', (req, res) => {
  * they have added to the shelf
  */
 router.get('/count', (req, res) => {
-
+    let sql = `SELECT "person".username, COUNT("item".*)
+            FROM "person"
+            LEFT JOIN "item" ON "item".person_id = "person".id
+            GROUP BY "person".username;`
+    pool.query(sql).then((response) => {
+        res.send(response.rows)
+    }).catch((error) => {
+        console.log(error);
+        res.sendStatus(500);
+    })
 });
 
 
