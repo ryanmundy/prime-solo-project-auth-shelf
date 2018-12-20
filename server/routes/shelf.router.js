@@ -58,7 +58,7 @@ router.put('/:id', (req, res) => {
 
 
 /**
- * Return all users along with the total number of items 
+ * Return all users along with the total number of items
  * they have added to the shelf
  */
 router.get('/count', (req, res) => {
