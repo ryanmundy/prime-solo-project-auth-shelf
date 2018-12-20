@@ -7,7 +7,7 @@ class AddItem extends Component {
         description: '',
         url: ''
     }
-    handleChange = (name) = ({target:{value}}) => {
+    handleChange = (name) => ({target:{value}}) => {
         this.setState({
             [name]: value
         })
