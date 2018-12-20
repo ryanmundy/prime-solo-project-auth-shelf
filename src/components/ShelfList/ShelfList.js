@@ -9,6 +9,8 @@ class ShelfList extends Component{
     }
 
     getShelf( ) {
+        console.log('getShelf');
+        
         this.props.dispatch({ type: 'FETCH_SHELF'})
     }//end getShelf
 
@@ -16,14 +18,11 @@ class ShelfList extends Component{
         return(
             <div>
                 <p>SHELF LIST</p>
-                {JSON.stringify(this.props.reduxStore.shelfReducer)}
+                {JSON.stringify(this.props.reduxStore.shelf)}
             </div>
         )
     }
 }
-
-
-
 
 // Instead of taking everything from state, we just want the user info.
 // if you wanted you could write this code like this:

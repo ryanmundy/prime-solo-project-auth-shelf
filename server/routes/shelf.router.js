@@ -7,15 +7,16 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 /**
  * Get all of the items on the shelf
  */
-router.get('/', (req, res) => {
-    res.sendStatus(200); // For testing only, can be removed
-});
+// router.get('/', (req, res) => {
+//     res.sendStatus(200); // For testing only, can be removed
+// });
 
 router.get('/', rejectUnauthenticated, (req, res) => {
     console.log('req.user:', req.user);
     let queryText = (`SELECT * FROM "item";`);
         // WHERE ($1) > "secret"."secrecy_level";`);
     pool.query(queryText).then((result) => {
+        console.log('result.rows', result.rows);
         res.send(result.rows);
     }).catch((error) => {
         console.log(error);

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { put, takeLatest } from 'redux-saga/effects';
+import { put, takeEvery } from 'redux-saga/effects';
 
 // worker Saga: will be fired on "FETCH_SHELF" actions
 function* fetchShelf() {
@@ -23,11 +23,11 @@ function* fetchShelf() {
     }
 }
 
-setShelf
+// function* setShelf()
 
 function* shelfSaga() {
-    yield takeLatest('FETCH_SHELF', fetchShelf);
-    yield takeLatest('SET_SHELF', setShelf);
+    yield takeEvery('FETCH_SHELF', fetchShelf);
+    // yield takeLatest('SET_SHELF', setShelf);
 }
 
 export default shelfSaga;
