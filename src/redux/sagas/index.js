@@ -2,6 +2,7 @@ import { all } from 'redux-saga/effects';
 import loginSaga from './loginSaga';
 import registrationSaga from './registrationSaga';
 import userSaga from './userSaga';
+import shelfSaga from './shelfSaga'
 import userListSaga from './userListSaga';
 import addItem from './additem';
 
@@ -18,6 +19,7 @@ export default function* rootSaga() {
     loginSaga(),
     registrationSaga(),
     userSaga(),
+    shelfSaga(),
     userListSaga(),
     addItem()
   ]);

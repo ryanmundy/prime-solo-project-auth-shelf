@@ -16,6 +16,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
+import ShelfList from '../ShelfList/ShelfList';
 import AddItem from '../AddItem/AddItem';
 import UserList from '../UserList/UserList';
 
