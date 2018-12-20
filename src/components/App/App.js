@@ -17,6 +17,7 @@ import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import AddItem from '../AddItem/AddItem';
+import UserList from '../UserList/UserList';
 
 import './App.css';
 
@@ -60,6 +61,11 @@ class App extends Component {
               exact
               path="/add-item"
               component={AddItem}
+            />
+            <ProtectedRoute
+              exact
+              path="/user-list"
+              component={UserList}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

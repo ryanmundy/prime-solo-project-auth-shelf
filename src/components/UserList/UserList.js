@@ -10,10 +10,11 @@ class UserList extends Component {
     render(){
 
         let userRow = this.props.users.map((user, i)=>{
-            <tr key={i}>
+           return( <tr key={i}>
             <td>{user.username}</td>
             <td>{user.count}</td>
             </tr>
+           );
         })
 
         return(
