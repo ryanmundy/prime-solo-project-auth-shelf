@@ -1,6 +1,7 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const rejectUnauthenticated = require('../modules/authentication-middleware');
 
 /**
  * Get all of the items on the shelf
@@ -14,7 +15,15 @@ router.get('/', (req, res) => {
  * Add an item for the logged in user to the shelf
  */
 router.post('/', (req, res) => {
-
+    const sqlText = `INSERT INTO "item"("description", "image_url", "person_id")
+    VALUES($1, $2, $3);`
+    pool.query(sqlText, [req.body.description, req.body.url, req.user.id])
+    .then( result => {
+        res.sendStatus(201);
+    }).catch( err => {
+        console.log('error in shelf POST:', err);
+        res.sendStatus(500);
+    })
 });
 
 
