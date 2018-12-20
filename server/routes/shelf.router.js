@@ -48,7 +48,16 @@ router.put('/:id', (req, res) => {
  * they have added to the shelf
  */
 router.get('/count', (req, res) => {
-
+    let sql = `SELECT "person".username, COUNT("item".*)
+            FROM "person"
+            LEFT JOIN "item" ON "item".person_id = "person".id
+            GROUP BY "person".username;`
+    pool.query(sql).then((response) => {
+        res.send(response.rows)
+    }).catch((error) => {
+        console.log(error);
+        res.sendStatus(500);
+    })
 });
 
 
