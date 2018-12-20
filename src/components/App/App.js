@@ -53,6 +53,11 @@ class App extends Component {
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}
             <ProtectedRoute
+                exact
+                path="/shelf"
+                component={ShelfList}
+            />
+            <ProtectedRoute
               exact
               path="/info"
               component={InfoPage}

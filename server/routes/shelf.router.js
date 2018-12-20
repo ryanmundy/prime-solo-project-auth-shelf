@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 /**
  * Add an item for the logged in user to the shelf
  */
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
     const sqlText = `INSERT INTO "item"("description", "image_url", "person_id")
     VALUES($1, $2, $3);`
     pool.query(sqlText, [req.body.description, req.body.url, req.user.id])
