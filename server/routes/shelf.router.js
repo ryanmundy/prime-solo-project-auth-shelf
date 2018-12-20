@@ -13,9 +13,9 @@ router.get('/', (req, res) => {
 
 router.get('/', rejectUnauthenticated, (req, res) => {
     console.log('req.user:', req.user);
-    let queryText = (`SELECT * FROM "secret" 
-        WHERE ($1) > "secret"."secrecy_level";`);
-    pool.query(queryText, [req.user.clearance_level]).then((result) => {
+    let queryText = (`SELECT * FROM "item";`);
+        // WHERE ($1) > "secret"."secrecy_level";`);
+    pool.query(queryText).then((result) => {
         res.send(result.rows);
     }).catch((error) => {
         console.log(error);
