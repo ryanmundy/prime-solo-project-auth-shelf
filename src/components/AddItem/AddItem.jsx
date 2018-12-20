@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class AddItem extends Component {
-
     state = {
         description: '',
         url: ''
     }
+
     handleChange = (name) => ({target:{value}}) => {
         this.setState({
             [name]: value
@@ -23,9 +23,9 @@ class AddItem extends Component {
     render() {
         return (
             <div>
-                <input type="text" onChange={this.handleChange(description)} value={this.state.description} placeholder='Description' />
-                <input type="text" onChange={this.handleChange(url)} value={this.state.description} placeholder='Image URL' />
-                <button onClick={this.handleSumbit}>Add Item</button>
+                <input type="text" onChange={this.handleChange('description')} value={this.state.description} placeholder='Description' />
+                <input type="text" onChange={this.handleChange('url')} value={this.state.url} placeholder='Image URL' />
+                <button onClick={this.handleSubmit}>Add Item</button>
             </div>
         )
     }
