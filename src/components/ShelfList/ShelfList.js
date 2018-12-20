@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
+import ShelfItem from '../ShelfItem/ShelfItem';
 
 class ShelfList extends Component{
 
@@ -16,17 +17,30 @@ class ShelfList extends Component{
 
     render(){
         return(
-            <div>
-                <p>SHELF LIST</p>
-                {JSON.stringify(this.props.reduxStore.shelf)}
-            </div>
+            // <div>
+            //     <p>SHELF LIST</p>
+            //     {JSON.stringify(this.props.reduxStore.shelf)}
+            // </div>
+            <table className="ShelfList">
+                <thead>
+                    <tr>
+                        <th className="shelfImage">Image</th>
+                        <th>Description</th>
+                        <th>Person</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {/* Render each item from the shelf reducer */}
+                    {this.props.reduxStore.shelf.map((each) => {
+                        return (<ShelfItem key={each.id} image= {each.image_url} description={each.description} person={each.person_id} />);
+                    })}
+                </tbody>
+            </table>
         )
     }
 }
 
-// Instead of taking everything from state, we just want the user info.
-// if you wanted you could write this code like this:
-// const mapStateToProps = ({user}) => ({ user });
+// Instead of taking everything from state, we just want the shelf info.
 const mapStateToProps = reduxStore => ({
     reduxStore,
 });
