@@ -2,12 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class UserList extends Component {
+
+    componentDidMount(){
+        this.props.dispatch({type: "FETCH_USER_LIST"})
+    }
+
     render(){
 
-        let userRow = this.props.users.map(user=>{
-            <tr key={user.id}>
+        let userRow = this.props.users.map((user, i)=>{
+            <tr key={i}>
             <td>{user.username}</td>
-            <td>{user.itemCount}</td>
+            <td>{user.count}</td>
             </tr>
         })
 
@@ -30,7 +35,7 @@ class UserList extends Component {
 }
 
 const mapStateToProps = reduxStore => ({
-    users: reduxStore.users
+    users: reduxStore.userListReducer
 });
 
 export default connect(mapStateToProps)(UserList);
