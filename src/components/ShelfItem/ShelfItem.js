@@ -19,21 +19,6 @@ const styles = {
 
 class ShelfItem extends Component {
 
-    // handleDeleteClick = event => {
-    //     console.log('event happended')
-    //     this.setState({
-    //         newPlant: {
-    //             ...this.state.newPlant,
-    //             name: event.target.value,
-    //         }
-    //     });
-    // }
-
-    handleDeleteClick = () => {
-        console.log('this.props.id', this.props.id);
-        this.props.dispatch({ type: 'DELETE_SHELF_ITEM', payload: {item: this.props.id, user: this.props.person} })
-    }
-
     render() {
         const { classes } = this.props;
 
@@ -54,9 +39,6 @@ class ShelfItem extends Component {
                                 {this.props.person}
                             </Typography>
                         </CardContent>
-                        <Button size="small" color="primary" onClick={this.handleDeleteClick}>
-                            Delete
-                        </Button>
                     </CardActionArea>
                 </Card>
             </div>
@@ -74,24 +56,3 @@ const mapStateToProps = reduxStore => ({
 
 // this allows us to use <App /> in index.js
 export default connect(mapStateToProps)(withStyles(styles)(ShelfItem));
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-// function ShelfItem(props) {
-//     const { classes } = props;
-//     return (<div></div>)
-
-// }
-
-// // ShelfItem.propTypes = {
-// //     classes: PropTypes.object.isRequired,
-// // };
-
-
-
-
-
