@@ -11,7 +11,7 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 //     res.sendStatus(200); // For testing only, can be removed
 // });
 
-router.get('/', rejectUnauthenticated, (req, res) => {
+router.get('/', (req, res) => {
     console.log('req.user:', req.user);
     let queryText = (`SELECT * FROM "item";`);
         // WHERE ($1) > "secret"."secrecy_level";`);
