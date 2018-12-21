@@ -31,7 +31,7 @@ class UserList extends Component {
     const { classes } = this.props;
     return (
       <div>
-        <h1>User List</h1>
+        <h1 class="header-text">User List</h1>
         <Paper className={classes.root}>
           <Table className={classes.table}>
             <TableHead>

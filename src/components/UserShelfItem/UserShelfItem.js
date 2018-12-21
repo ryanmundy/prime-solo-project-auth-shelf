@@ -41,9 +41,7 @@ class UserShelfItem extends Component {
               <Typography variant="h5" component="p">
                 {this.props.description}
               </Typography>
-              <Typography component="p">
-                {this.props.person}
-              </Typography>
+
             </CardContent>
             <Button size="small" color="primary" onClick={this.handleDeleteClick}>
               Delete

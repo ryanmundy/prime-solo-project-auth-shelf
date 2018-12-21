@@ -36,7 +36,7 @@ class ShelfItem extends Component {
                                 {this.props.description}
                             </Typography>
                             <Typography component="p">
-                                {this.props.person}
+                                <em>Submitted by: {this.props.username}</em>
                             </Typography>
                         </CardContent>
                     </CardActionArea>

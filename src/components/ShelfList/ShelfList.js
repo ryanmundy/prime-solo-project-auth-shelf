@@ -17,14 +17,16 @@ class ShelfList extends Component {
     render() {
         return (
             <div>
+            <h1 class="header-text">Shelf</h1>
                 {/* Render each item from the shelf reducer */}
                 {this.props.reduxStore.shelf.map((each) => {
-                    return (<ShelfItem 
-                        key={each.id} 
+                    return (<ShelfItem
+                        key={each.id}
                         id={each.id} //this is NEEDED for delete
-                        image={each.image_url} 
-                        description={each.description} 
-                        person={each.person_id} />);
+                        image={each.image_url}
+                        description={each.description}
+                        person={each.person_id}
+                        username={each.username} />);
                 })}
             </div>
         )

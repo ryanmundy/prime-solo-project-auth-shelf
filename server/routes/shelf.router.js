@@ -13,7 +13,9 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 
 router.get('/', (req, res) => {
     console.log('req.user:', req.user);
-    let queryText = (`SELECT * FROM "item";`);
+  let queryText = (`SELECT "item".*, "person".username
+                    FROM "item"
+                    JOIN "person" ON "item".person_id = "person".id;`);
         // WHERE ($1) > "secret"."secrecy_level";`);
     pool.query(queryText).then((result) => {
         console.log('result.rows', result.rows);
@@ -95,7 +97,7 @@ router.get('/count', (req, res) => {
 
 router.get('/usershelf', (req, res) => {
     console.log(req.query.id);
-    
+
     pool.query(`SELECT * FROM "item" WHERE "person_id" = $1`, [req.query.id])
         .then(result => {
             res.send(result.rows)

@@ -44,6 +44,8 @@ class AddItem extends Component {
 
   render() {
     return (
+      <div>
+        <h1 class="header-text">Add Item</h1>
       <form >
         <TextField
           id="outlined-name"
@@ -66,6 +68,7 @@ class AddItem extends Component {
         <br/>
         <Button variant="contained" color="primary" type='submit' onClick={this.handleSubmit}>Add Item</Button>
       </form>
+      </div>
     )
   }
 }
