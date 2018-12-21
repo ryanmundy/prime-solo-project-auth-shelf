@@ -16,7 +16,8 @@ const rootReducer = combineReducers({
   loginMode, // will have a value of 'login' or 'registration' to control which screen is shown
   user, // will have an id and username if someone is logged in
   shelf, // will be an item that a user is putting (POSTing) on the shelf
-  userListReducer
+  userListReducer,
+  userShelfItem
 });
 
 export default rootReducer;
