@@ -19,6 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import ShelfList from '../ShelfList/ShelfList';
 import AddItem from '../AddItem/AddItem';
 import UserList from '../UserList/UserList';
+import UserShelf from '../UserShelf/UserShelf';
 
 import './App.css';
 
@@ -53,10 +54,15 @@ class App extends Component {
             />
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}
-            <ProtectedRoute
+            <Route
                 exact
                 path="/shelf"
                 component={ShelfList}
+            />
+            <ProtectedRoute
+                exact
+                path="/usershelf"
+                component={UserShelf}
             />
             <ProtectedRoute
               exact

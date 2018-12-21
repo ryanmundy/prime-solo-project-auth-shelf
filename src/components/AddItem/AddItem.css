@@ -1,3 +1,15 @@
 .addItemPage{
     background-color: azure;
 }
+
+.upload-button {
+    height: 36px;
+    color: black;
+    background-color: #fff;
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 4px;
+}

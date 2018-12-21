@@ -11,7 +11,7 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 //     res.sendStatus(200); // For testing only, can be removed
 // });
 
-router.get('/', rejectUnauthenticated, (req, res) => {
+router.get('/', (req, res) => {
     console.log('req.user:', req.user);
     let queryText = (`SELECT * FROM "item";`);
         // WHERE ($1) > "secret"."secrecy_level";`);
@@ -36,6 +36,7 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
         res.sendStatus(500);
     });
 });
+
 
 
 /**
@@ -91,8 +92,17 @@ router.get('/count', (req, res) => {
 /**
  * Return a specific item by id
  */
-router.get('/:id', (req, res) => {
 
-});
+router.get('/usershelf', (req, res) => {
+    console.log(req.query.id);
+    
+    pool.query(`SELECT * FROM "item" WHERE "person_id" = $1`, [req.query.id])
+        .then(result => {
+            res.send(result.rows)
+        }).catch(err => {
+            console.log('error in getting user items:', err);
+            res.sendStatus(500)
+        })
+})
 
 module.exports = router;
