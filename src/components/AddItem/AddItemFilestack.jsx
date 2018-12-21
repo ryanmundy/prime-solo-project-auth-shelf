@@ -1,31 +1,19 @@
+
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import ReactFilestack from 'filestack-react';
 
-const FILESTACK_API_KEY = process.env.REACT_APP_FILESTACK_API_KEY;
 
-const basicOptions = {
-  accept: 'image/*',
-  fromSources: ['local_file_system'],
-  maxSize: 1024 * 1024,
-  maxFiles: 1,
-}
+
+
+
 
 class AddItem extends Component {
   state = {
     description: '',
     url: ''
-  }
-
-  onSuccess = (result) => {
-    this.setState({
-      url: result.filesUploaded[0].url
-    })
-  }
-  onError = (error) => {
-    console.error('error', error);
   }
 
   handleChange = (name) => ({ target: { value } }) => {
@@ -52,13 +40,13 @@ class AddItem extends Component {
           margin="normal"
           variant="outlined"
         />
-        <ReactFilestack
-          apikey={FILESTACK_API_KEY}
-          buttonText="Upload Photo"
-          buttonClass="ui medium button gray"
-          options={basicOptions}
-          onSuccess={this.onSuccess}
-          onError={this.onError}
+        <TextField
+          id="outlined-name"
+          label="url"
+          value={this.state.url}
+          onChange={this.handleChange('url')}
+          margin="normal"
+          variant="outlined"
         />
         <Button variant="contained" color="primary" type='submit' onClick={this.handleSubmit}>Add Item</Button>
       </form>
