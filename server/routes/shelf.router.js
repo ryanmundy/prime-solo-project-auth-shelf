@@ -80,8 +80,10 @@ router.get('/count', (req, res) => {
  * Return a specific item by id
  */
 
-router.get('/:id', (req, res) => {
-    pool.query(`SELECT * FROM "item" WHERE "person_id" = $1`, [req.params.id])
+router.get('/usershelf', (req, res) => {
+    console.log(req.query.id);
+    
+    pool.query(`SELECT * FROM "item" WHERE "person_id" = $1`, [req.query.id])
         .then(result => {
             res.send(result.rows)
         }).catch(err => {
