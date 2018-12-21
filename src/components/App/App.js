@@ -59,6 +59,11 @@ class App extends Component {
                 component={ShelfList}
             />
             <ProtectedRoute
+                exact
+                path="/shelf/:id"
+                component={UserShelf}
+            />
+            <ProtectedRoute
               exact
               path="/info"
               component={InfoPage}
