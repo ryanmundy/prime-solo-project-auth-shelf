@@ -19,6 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import ShelfList from '../ShelfList/ShelfList';
 import AddItem from '../AddItem/AddItem';
 import UserList from '../UserList/UserList';
+import UserShelf from '../UserShelf/UserShelf';
 
 import './App.css';
 
@@ -57,6 +58,11 @@ class App extends Component {
                 exact
                 path="/shelf"
                 component={ShelfList}
+            />
+            <ProtectedRoute
+                exact
+                path="/shelf/:id"
+                component={UserShelf}
             />
             <ProtectedRoute
               exact

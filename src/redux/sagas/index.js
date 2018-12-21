@@ -5,7 +5,7 @@ import userSaga from './userSaga';
 import shelfSaga from './shelfSaga'
 import userListSaga from './userListSaga';
 import addItem from './additem';
-
+import userShelf from './userShelf';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
