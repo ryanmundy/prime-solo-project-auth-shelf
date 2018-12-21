@@ -21,6 +21,7 @@ export default function* rootSaga() {
     userSaga(),
     shelfSaga(),
     userListSaga(),
-    addItem()
+    addItem(),
+    userShelf()
   ]);
 }
