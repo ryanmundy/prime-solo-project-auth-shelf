@@ -1,28 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import LogOutButton from '../LogOutButton/LogOutButton';
 import ShelfItem from '../ShelfItem/ShelfItem';
 
 class UserShelf extends Component {
 
-    // componentDidMount() {
-    //     this.getShelf();
-    // }
+    componentDidMount() {
+        this.getUserShelf();
+    }
 
-    // getShelf() {
-    //     console.log('getShelf');
-
-    //     this.props.dispatch({ type: 'FETCH_SHELF' })
-    // }//end getShelf
+    getUserShelf() {
+        this.props.dispatch({ type: 'FETCH_USER_ITEMS', payload:  this.props.reduxStore.user.id})
+    }//end getShelf
 
     render() {
         return (
             <div>
-                <h1>hello</h1>
-                {/* Render each item from the shelf reducer
-                {this.props.reduxStore.shelf.map((each) => {
+                {this.props.reduxStore.userShelfItem.map((each) => {
                     return (<ShelfItem key={each.id} image={each.image_url} description={each.description} person={each.person_id} />);
-                })} */}
+                })}
             </div>
         )
     }

@@ -24,15 +24,7 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/:id', (req, res) => {
-    pool.query(`SELECT * FROM "item" WHERE "person_id" = $1`, [req.params.id])
-    .then( result => {
-        res.send( result.rows )
-    }).catch( err => {
-        console.log('error in getting user items:', err);
-        res.sendStatus(500)
-    })
-})
+
 
 /**
  * Add an item for the logged in user to the shelf
@@ -87,8 +79,15 @@ router.get('/count', (req, res) => {
 /**
  * Return a specific item by id
  */
-router.get('/:id', (req, res) => {
 
-});
+router.get('/:id', (req, res) => {
+    pool.query(`SELECT * FROM "item" WHERE "person_id" = $1`, [req.params.id])
+        .then(result => {
+            res.send(result.rows)
+        }).catch(err => {
+            console.log('error in getting user items:', err);
+            res.sendStatus(500)
+        })
+})
 
 module.exports = router;
