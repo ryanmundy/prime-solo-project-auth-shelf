@@ -31,7 +31,7 @@ class ShelfItem extends Component {
 
     handleDeleteClick = () => {
         console.log('this.props.id', this.props.id);
-        this.props.dispatch({ type: 'DELETE_SHELF_ITEM', payload: this.props.id })
+        this.props.dispatch({ type: 'DELETE_SHELF_ITEM', payload: {item: this.props.id, user: this.props.person} })
     }
 
     render() {

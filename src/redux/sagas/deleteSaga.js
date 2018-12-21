@@ -16,11 +16,12 @@ function* deleteShelfItem(action) {
         // allow the server session to recognize the user
         // If a user is logged in, this will delete shelf item
         // from the server session (req.user)
-        const response = yield axios.delete(`api/delete/${action.payload}`, config);
+        const response = yield axios.delete(`api/delete/${action.payload.item}`, config);
         // const response = yield axios.delete(`api/delete/${id}`);
 
         //reset the client side shelf
         yield put({ type: 'FETCH_SHELF', payload: response.data });
+        yield put({ type: 'FETCH_USER_ITEMS', payload: action.payload.user });
     } catch (error) {
         console.log('shelf delete item failed, error:', error);
     }
