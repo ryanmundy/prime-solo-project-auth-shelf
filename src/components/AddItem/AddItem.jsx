@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import ReactFilestack from 'filestack-react';
+import './AddItem.css'
 
 const FILESTACK_API_KEY = process.env.REACT_APP_FILESTACK_API_KEY;
 
@@ -52,14 +53,17 @@ class AddItem extends Component {
           margin="normal"
           variant="outlined"
         />
+        <br/>
         <ReactFilestack
           apikey={FILESTACK_API_KEY}
           buttonText="Upload Photo"
-          buttonClass="ui medium button gray"
+          buttonClass="upload-button"
           options={basicOptions}
           onSuccess={this.onSuccess}
           onError={this.onError}
         />
+        <br />
+        <br/>
         <Button variant="contained" color="primary" type='submit' onClick={this.handleSubmit}>Add Item</Button>
       </form>
     )
