@@ -20,6 +20,22 @@ const styles = {
 };
 
 class ShelfItem extends Component {
+
+    // handleDeleteClick = event => {
+    //     console.log('event happended')
+    //     this.setState({
+    //         newPlant: {
+    //             ...this.state.newPlant,
+    //             name: event.target.value,
+    //         }
+    //     });
+    // }
+
+    handleDeleteClick = () => {
+        console.log('this.props.id', this.props.id);
+        this.props.dispatch({ type: 'DELETE_SHELF_ITEM', payload: this.props.id })
+    }
+
     render() {
         const { classes } = this.props;
 
@@ -40,7 +56,7 @@ class ShelfItem extends Component {
                                 {this.props.person}
                             </Typography>
                         </CardContent>
-                        <Button size="small" color="primary">
+                        <Button size="small" color="primary" onClick={this.handleDeleteClick}>
                             Delete
                         </Button>
                     </CardActionArea>

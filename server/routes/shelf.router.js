@@ -24,6 +24,19 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     });
 });
 
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
+    console.log(req.params);
+    let id = req.params.id
+    let queryText = (`DELETE FROM "item" WHERE "id" = ($1);`);
+    pool.query(queryText, [id]).then((result) => {
+        console.log('result.rows', result.rows);
+        res.send(result.rows);
+    }).catch((error) => {
+        console.log(error);
+        res.sendStatus(500);
+    });
+});
+
 
 /**
  * Add an item for the logged in user to the shelf
@@ -41,12 +54,12 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 });
 
 
-/**
- * Delete an item if it's something the logged in user added
- */
-router.delete('/:id', (req, res) => {
+// /**
+//  * Delete an item if it's something the logged in user added
+//  */
+// router.delete('/:id', (req, res) => {
 
-});
+// });
 
 
 /**

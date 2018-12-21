@@ -20,7 +20,12 @@ class ShelfList extends Component {
             <div>
                 {/* Render each item from the shelf reducer */}
                 {this.props.reduxStore.shelf.map((each) => {
-                    return (<ShelfItem key={each.id} image={each.image_url} description={each.description} person={each.person_id} />);
+                    return (<ShelfItem 
+                        key={each.id} 
+                        id={each.id} //this is NEEDED for delete
+                        image={each.image_url} 
+                        description={each.description} 
+                        person={each.person_id} />);
                 })}
             </div>
         )
