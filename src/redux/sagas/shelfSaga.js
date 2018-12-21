@@ -25,11 +25,9 @@ function* fetchShelf() {
     }
 }
 
-// function* setShelf()
-
 function* shelfSaga() {
     yield takeEvery('FETCH_SHELF', fetchShelf);
-    // yield takeLatest('SET_SHELF', setShelf);
+
 }
 
 export default shelfSaga;

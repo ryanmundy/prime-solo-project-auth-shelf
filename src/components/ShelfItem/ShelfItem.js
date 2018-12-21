@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import LogOutButton from '../LogOutButton/LogOutButton';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
@@ -20,6 +18,22 @@ const styles = {
 };
 
 class ShelfItem extends Component {
+
+    // handleDeleteClick = event => {
+    //     console.log('event happended')
+    //     this.setState({
+    //         newPlant: {
+    //             ...this.state.newPlant,
+    //             name: event.target.value,
+    //         }
+    //     });
+    // }
+
+    handleDeleteClick = () => {
+        console.log('this.props.id', this.props.id);
+        this.props.dispatch({ type: 'DELETE_SHELF_ITEM', payload: this.props.id })
+    }
+
     render() {
         const { classes } = this.props;
 
@@ -40,7 +54,7 @@ class ShelfItem extends Component {
                                 {this.props.person}
                             </Typography>
                         </CardContent>
-                        <Button size="small" color="primary">
+                        <Button size="small" color="primary" onClick={this.handleDeleteClick}>
                             Delete
                         </Button>
                     </CardActionArea>
