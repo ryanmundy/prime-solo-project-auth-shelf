@@ -15,8 +15,9 @@ class UserShelf extends Component {
     render() {
         return (
             <div>
+            <h1 class="header-text">User Shelf</h1>
                 {this.props.reduxStore.userShelfItem.map((each) => {
-                    return (<UserShelfItem id={each.id} key={each.id} image={each.image_url} description={each.description} person={each.person_id} />);
+                    return (<UserShelfItem id={each.id} key={each.id} image={each.image_url} description={each.description} person={each.person_id}/>);
                 })}
             </div>
         )
