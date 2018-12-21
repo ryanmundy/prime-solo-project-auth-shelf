@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import ShelfItem from '../ShelfItem/ShelfItem';
+import UserShelfItem from '../UserShelfItem/UserShelfItem';
 
 class UserShelf extends Component {
 
@@ -16,7 +16,7 @@ class UserShelf extends Component {
         return (
             <div>
                 {this.props.reduxStore.userShelfItem.map((each) => {
-                    return (<ShelfItem id={each.id} key={each.id} image={each.image_url} description={each.description} person={each.person_id} />);
+                    return (<UserShelfItem id={each.id} key={each.id} image={each.image_url} description={each.description} person={each.person_id} />);
                 })}
             </div>
         )
