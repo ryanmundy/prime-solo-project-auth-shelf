@@ -8,7 +8,7 @@ const Nav = (props) => (
     
   <div className="nav">
     <Link to="/home">
-      <h2 className="nav-title">Hello, {props.user.username}</h2>
+            <h2 className="nav-title">Hello {props.user.id ? props.user.username : 'random person!'}</h2>
     </Link>
     <div className="nav-right">
       <Link className="nav-link" to="/home">
